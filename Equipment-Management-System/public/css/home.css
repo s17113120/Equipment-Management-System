@@ -1,18 +1,21 @@
 :root {
     --orange: tomato;
-    --block: rgb(63, 63, 63);
+    --black: rgb(63, 63, 63);
 }
 
 body {
     padding: 0;
     margin: 0;
+    background-image: url('../../public/img/big-data-connector-1-2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .body-div {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: rgb(137, 137, 243);
+    /* background-color: rgb(137, 137, 243); */
     overflow: auto;
     zoom: 1;
 }
@@ -27,10 +30,15 @@ body {
 
 /* user_sidebar */
 
+:target {
+    border: 2px solid #D4D4D4;
+    background-color: #e5eecc;
+}
+
 .sidebar {
-    width: 20%;
+    width: 15%;
     height: 100%;
-    background-color: var(--block);
+    background-color: var(--black);
     color: white;
     float: left;
 }
@@ -38,7 +46,7 @@ body {
 .sidebar-container {
     position: relative;
     width: 100%;
-    background-color: var(--block);
+    background-color: var(--black);
 }
 
 .sidebar-container .sidebar-title {
@@ -57,7 +65,6 @@ body {
 
 .sidebar-title .title {
     display: flex;
-    /* width: calc(100% - rem); */
     font-size: 35px;
     padding: 0px 10px;
     justify-content: center;
@@ -87,13 +94,12 @@ body {
     list-style: none;
     justify-content: center;
     align-items: center;
-    /* background-color: tomato; */
     margin: 0.25rem;
 }
 
 .sidebar-container .hamburger li:hover {
     border-radius: 100px;
-    background-color: rgba(255, 255, 255, 0.699);
+    background-color: rgba(253, 253, 253, 0.699);
 }
 
 .sidebar-container .hamburger li a {
@@ -114,10 +120,12 @@ body {
     align-items: center;
     font-weight: bold;
     padding: 0px 20px;
+    flex-wrap: wrap;
 }
 
 .userData .user-div {
     display: flex;
+    min-width: 50px;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -138,9 +146,10 @@ body {
 /* content */
 
 .content {
-    width: 80%;
+    width: 85%;
     height: 100%;
-    background-color: rgb(156, 255, 136);
+    padding: 3rem;
+    /* background-color: rgb(197, 197, 197); */
     float: right;
 }
 
@@ -156,7 +165,7 @@ body {
         height: 90px;
         width: 100%;
         position: relative;
-        background-color: var(--block);
+        background-color: var(--black);
     }
     .sidebar-top-container {
         position: relative;

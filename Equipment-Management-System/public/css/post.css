@@ -1,0 +1,69 @@
+:root {
+    --orange: tomato;
+    --black: rgb(63, 63, 63);
+    --blackC: rgba(94, 94, 94, 0.911);
+}
+
+
+/* posts createForm */
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.paper {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    background-color: var(--blackC);
+    padding: 2rem 3rem;
+    /* border: 3px var(--orange) solid; */
+}
+
+.paper-tall-thin-3 {
+    position: relative;
+    width: 60%;
+    height: 50%;
+    background-color: var(--blackC);
+    padding: 2rem 3rem;
+    color: white;
+}
+
+.paper-tall-thin-3.flex-c-paper {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.paper-tall-thin-3 .paper-title {
+    font-size: 28px;
+    font-weight: bold;
+    /* border: 3px var(--orange) solid; */
+    /* padding: 1rem; */
+    margin-bottom: 2.5rem;
+}
+
+.paper-tall-thin-3 .paper-body {}
+
+.paper .paper-title {
+    display: flex;
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 20px;
+    top: -30px;
+    left: 0;
+    font-weight: bold;
+    color: white;
+    /* width: 150px; */
+    height: 30px;
+    background-color: var(--blackC);
+    justify-content: center;
+}

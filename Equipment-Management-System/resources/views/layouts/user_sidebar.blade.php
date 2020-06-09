@@ -8,17 +8,24 @@
     <div class="sidebar-content">
         <ul class="hamburger">
             <li>
-                <a href="#"><i class="fas fa-search"></i>查看設備</a>
+                <a href="{{ url('home') }}"><i class="fas fa-search"></i>首頁</a>
             </li>
             <li>
-                <a href="#"><i class="fas fa-plus"></i>借出設備</a>
+                <a href="{{ url('devices') }}"><i class="fas fa-search"></i>查看設備</a>
             </li>
             <li>
-                <a href="#"><i class="fas fa-plus"></i>新增設備</a>
+                <a href="{{ url('devices/create') }}"><i class="fas fa-plus"></i>新增設備</a>
             </li>
             <li>
-                <a href="#"><i class="fas fa-paste"></i>個人借閱狀況</a>
+                <a href="{{ url('records/create') }}"><i class="fas fa-plus"></i>設備借出</a>
             </li>
+            <li>
+                <a href="{{ url('records/searchLend') }}"><i class="fas fa-paste"></i>查看個人借出</a>
+            </li>
+            <li>
+                <a href="{{ url('records/checkLend') }}"><i class="fas fa-paste"></i>審核借出</a>
+            </li>
+
 
         </ul>
         <div class="userData">

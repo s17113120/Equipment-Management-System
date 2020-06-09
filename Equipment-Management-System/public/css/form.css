@@ -1,0 +1,93 @@
+:root {
+    --orange: tomato;
+    --black: rgb(63, 63, 63);
+    --blackC: rgba(94, 94, 94, 0.911);
+}
+
+form .form-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+form .form-group-b {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 400px;
+}
+
+.group-div {
+    position: relative;
+    margin: 0rem 1rem;
+}
+
+.form-group .group-title,
+.form-group-b .group-title {
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    min-width: 6%;
+    width: 8%;
+    height: 100%;
+}
+
+.form-group .group-line,
+.form-group-b .group-line {
+    position: relative;
+    background-color: var(--orange);
+    width: 0.8%;
+    height: 80%;
+}
+
+.form-group .group-input {
+    position: relative;
+    width: 90%;
+    height: 100%;
+}
+
+.form-group .group-input input {
+    width: 100%;
+    padding: 0.25rem 1rem;
+    text-align: center;
+}
+
+.form-group-b .group-textarea {
+    position: relative;
+    width: 80%;
+    height: 100%;
+}
+
+.form-group-b .group-textarea textarea {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+}
+
+form .createBtn {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    /* background-color: var(--blackC); */
+    /* border-left: 3px var(--orange) solid; */
+    /* border-top: 3px var(--orange) solid; */
+    bottom: 0;
+    right: 0;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 0px;
+}
+
+form .createBtn:hover {
+    background-color: var(--orange);
+}
+
+form .createBtn:hover svg {
+    color: white;
+}
+
+.form-btn svg {
+    color: var(--orange);
+}

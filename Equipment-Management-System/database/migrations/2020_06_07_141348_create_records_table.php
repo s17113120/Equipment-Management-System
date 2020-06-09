@@ -17,7 +17,8 @@ class CreateRecordsTable extends Migration
             $table->increments('record_id')->start_from(1);
             $table->string('user_id');
             $table->string('device_id');
-            $table->string('record_title');
+            $table->integer('record_amount');
+            $table->string('record_dateOfReturn');
             $table->string('record_content');
             $table->timestamps();
         });

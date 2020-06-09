@@ -15,8 +15,8 @@ class UserPostsController extends Controller
      */
     public function index()
     {
-        $posts = User::orderBy('created_at','desc')->paginate(2); // paginate(2) 分頁(幾個一頁) ，view 需加 {{ $posts->links() }}
-        return view('management.checkUsers')->with('posts',$posts);
+        // $posts = User::orderBy('created_at','desc')->paginate(2); // paginate(2) 分頁(幾個一頁) ，view 需加 {{ $posts->links() }}
+        // return view('management.checkUsers')->with('posts',$posts);
     }
 
     /**
@@ -27,7 +27,7 @@ class UserPostsController extends Controller
     public function create()
     {
         // return view('posts.createForm');
-        return 123;
+        // return 123;
     }
 
     /**

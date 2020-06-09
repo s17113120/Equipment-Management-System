@@ -9,11 +9,11 @@ class Device extends Model
     // Table Name
     protected $table = 'devices';
     //Primary Key
-    protected $primaryKey = 'device_id';
+    protected $primaryKey = 'id';
     // Timestamps
     public $timestamps = true;
 
-    public function user() {
+    public function device() {
         return $this->brlongsTo('App\Device');
     }
 }
