@@ -30,7 +30,7 @@
 .paper-tall-thin-3 {
     position: relative;
     width: 60%;
-    height: 50%;
+    /* height: 50%; */
     background-color: var(--blackC);
     padding: 2rem 3rem;
     color: white;
@@ -48,7 +48,7 @@
     font-weight: bold;
     /* border: 3px var(--orange) solid; */
     /* padding: 1rem; */
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .paper-tall-thin-3 .paper-body {}

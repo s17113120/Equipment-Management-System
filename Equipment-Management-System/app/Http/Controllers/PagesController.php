@@ -4,11 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class PagesController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $title = 'Welcome To Laravel';
-        return view('pages.home')->with('title', $title);
+
+        if (session()->has('userdata')) {
+            if (session('userdata')->user_authority == "management") {
+                return view('pages.management_home');
+            } else if (session('userdata')->user_authority == "admin") {
+                return view('pages.admin_home');
+            } else { // user
+                return view('pages.user_home');;
+
+            }
+        }
+        else {
+            return view('pages.home')->with('title', $title);
+            // return redirect('/');
+        }
     }
 
     public function login() {
@@ -21,7 +36,12 @@ class PagesController extends Controller
     }
 
 
+    public function logout(Request $request) {
+        $title = 'Welcome To Laravel';
+        session()->flush();
+        return  redirect('/');
 
+    }
 
 
 

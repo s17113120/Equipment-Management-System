@@ -19,6 +19,12 @@ Route::get('login', 'PagesController@login');
 Route::get('addUser', 'PagesController@addUser');
 
 
+Route::post('user/store', 'UserPostsController@store');
+Route::post('user/login', 'UserPostsController@login');
+Route::get('logout', 'UserPostsController@logout');
+
+
+
 
 // Route::get('posts', 'PagesController@index');
 

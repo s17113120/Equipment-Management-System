@@ -9,7 +9,7 @@ class User extends Model
     // Table Name
     protected $table = 'users';
     //Primary Key
-    protected $primaryKey = 'user_student_id';
+    protected $primaryKey = 'user_id';
     // Timestamps
     public $timestamps = true;
 

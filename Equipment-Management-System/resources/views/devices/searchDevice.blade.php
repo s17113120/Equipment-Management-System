@@ -1,4 +1,4 @@
-@extends('pages.index')
+@extends('pages.createForm')
 
 @section('content')
     <div class="container">
