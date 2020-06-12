@@ -47,16 +47,25 @@ class UserPostsController extends Controller
             'password' => 'required',
         ]);
 
-        $user = new User;
-        $user->user_student_id = $request->input('no');
-        $user->user_name = $request->input('name');
-        $user->user_account = $request->input('account');
-        $user->user_password = Hash::make($request->input('password'));
-        $user->user_authority = "user";
+        $check_student_id = User::where('user_student_id', '=', $request->no)->first();
+        $checkAccount = User::where('user_account', '=', $request->account)->first();
 
-        $user->save();
+        if ($checkAccount) {
+            return redirect('/addUser')->with('error', '帳號已申請過');
+        } else if ($check_student_id){
+            return redirect('/addUser')->with('error', '學號已申請過');
+        } else {
+            $user = new User;
+            $user->user_student_id = $request->input('no');
+            $user->user_name = $request->input('name');
+            $user->user_account = $request->input('account');
+            $user->user_password = Hash::make($request->input('password'));
+            $user->user_authority = "user";
 
-        return redirect('/addUser')->with('success', '新增成功');
+            $user->save();
+
+            return redirect('/addUser')->with('success', '新增成功');
+        }
     }
 
     /**
@@ -107,20 +116,18 @@ class UserPostsController extends Controller
     public function login (Request $request) {
         $title = "登入";
         $account = $request->account;
-        $user = User::where(['user_account' => $request->account])->firstOrFail();
-        if (Hash::check($request->password, $user->user_password)) {
-            session()->put('userdata', $user);
+        $user = User::where(['user_account' => $request->account])->first();
+
+        if (count((array)$user) > 0) {
+            if (Hash::check($request->password, $user->user_password)) {
+                session()->put('userdata', $user);
+            } else {
+                return redirect()->back()->with('error', '帳號密碼錯誤');
+            }
         } else {
             return redirect()->back()->with('error', '帳號密碼錯誤');
         }
 
-        // if ($user->user_authority == "management") {
-        //     return redirect('/');
-        // } else if ($user->user_authority == "admin") {
-        //     return "admin";
-        // } else {
-        //     return "user";
-        // }
         return redirect('/');
     }
 

@@ -4,12 +4,57 @@
     --blackC: rgba(94, 94, 94, 0.911);
 }
 
+.container .table-search_div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* background-color: var(--blackC); */
+}
+
+.table-search_div .table-search {
+    display: flex;
+    margin: 1rem 0rem;
+    padding: 1rem;
+    /* width: 30%; */
+    /* border-radius: 50px; */
+    background-color: var(--blackC);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.table-search .icon {
+    margin: 0rem 1rem;
+}
+
+.table-search input {
+    margin: 0rem 1rem;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0 none;
+    border-bottom: 3px solid rgb(255, 255, 255);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.table-search input:focus {
+    outline: none;
+    border-bottom: 3px solid var(--orange);
+    background-color: rgba(0, 0, 0, 0.219);
+}
+
 .container .table {
     /* margin-top: 100px; */
     width: 100%;
     position: relative;
     color: white;
     background-color: var(--blackC);
+}
+
+.table .thead {
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .table .thead .tr {
@@ -21,7 +66,7 @@
 .table .thead .tr .th {
     display: flex;
     flex-direction: column;
-    width: 16.666666%;
+    width: 20%;
     height: 100px;
     justify-content: center;
     align-items: center;
@@ -47,9 +92,10 @@
 
 .table .tbody .tr .td {
     display: flex;
-    width: 16.666666%;
+    width: 20%;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 
 

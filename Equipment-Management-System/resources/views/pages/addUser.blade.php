@@ -27,7 +27,6 @@
                         <div class="group-div group-line"></div>
                         <div class="group-div group-input"><input type="text" name="password"></div>
                     </div>
-
                     <button class="form-btn btn createBtn"><i class="fas fa-sign-in-alt"></i></button>
                 </form>
                 @include('inc.message')

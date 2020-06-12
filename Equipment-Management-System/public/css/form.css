@@ -4,12 +4,20 @@
     --blackC: rgba(94, 94, 94, 0.911);
 }
 
+
+/* form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */
+
 form .form-group {
     position: relative;
     display: flex;
     width: 100%;
     height: 50px;
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
 }
 
 form .form-group-b {
@@ -47,6 +55,11 @@ form .form-group-b {
     position: relative;
     width: 90%;
     height: 100%;
+}
+
+.form-group .group-input .help-text::before {
+    content: '* 必填';
+    color: var(--orange);
 }
 
 .form-group .group-input input {

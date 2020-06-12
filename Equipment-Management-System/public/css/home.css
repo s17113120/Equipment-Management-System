@@ -56,7 +56,8 @@ body {
     width: 100%;
     margin-top: 2rem;
     margin-bottom: 25px;
-    cursor: pointer;
+    /* cursor: pointer; */
+    user-select: none;
 }
 
 .sidebar-container .sidebar-content {
@@ -89,7 +90,8 @@ body {
 
 .sidebar-container .hamburger li {
     display: flex;
-    width: calc(100% - 5rem);
+    /* width: calc(100% - 5rem); */
+    width: 100%;
     height: 55px;
     list-style: none;
     justify-content: center;
@@ -98,7 +100,7 @@ body {
 }
 
 .sidebar-container .hamburger li:hover {
-    border-radius: 100px;
+    /* border-radius: 100px; */
     background-color: rgba(253, 253, 253, 0.699);
 }
 
@@ -115,7 +117,7 @@ body {
     display: flex;
     position: relative;
     width: 100%;
-    height: 40px;
+    /* height: 40px; */
     justify-content: space-around;
     align-items: center;
     font-weight: bold;
@@ -147,7 +149,7 @@ body {
 
 .content {
     width: 85%;
-    height: 100%;
+    /* height: 100%; */
     padding: 3rem;
     /* background-color: rgb(197, 197, 197); */
     float: right;

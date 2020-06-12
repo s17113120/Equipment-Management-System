@@ -1,12 +1,10 @@
-@extends('pages.management_index')
+@extends('pages.index')
 
 @section('content')
     <div class="container-fluid">
         <div class="paper">
 
-            {{-- @foreach ($user as $id)
-                {{ $id->user_name }}
-            @endforeach --}}
+            管理者 您好
 
     </div>
     </div>

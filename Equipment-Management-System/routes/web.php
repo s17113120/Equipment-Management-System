@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,45 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',  'PagesController@index');
-Route::get('home', 'PagesController@index');
-Route::get('login', 'PagesController@login');
-Route::get('addUser', 'PagesController@addUser');
+
+    Route::get('/',  'PagesController@index');
+    Route::get('home', 'PagesController@index');
+    Route::get('login', 'PagesController@login');
+    Route::get('addUser', 'PagesController@addUser');
 
 
-Route::post('user/store', 'UserPostsController@store');
-Route::post('user/login', 'UserPostsController@login');
-Route::get('logout', 'UserPostsController@logout');
+    Route::post('user/store', 'UserPostsController@store');
+    Route::post('user/login', 'UserPostsController@login');
+    Route::get('logout', 'UserPostsController@logout');
 
 
+    Route::group(['prefix' => 'devices'], function ($data) {
+        Route::get('/', 'DeviceController@index');
+        Route::get('/search/{data}', 'DeviceController@search');
+        Route::get('/create', 'DeviceController@create');
+        Route::post('/store', 'DeviceController@store');
 
+    });
 
-// Route::get('posts', 'PagesController@index');
-
-
-Route::resource('devices', 'DeviceController');
-Route::get('devices/create', 'DeviceController@create');
-// Route::post('posts/home',  'DeviceController@index');
-// Route::get('posts/lend', 'DeviceController@lend');
-
-// Route::resource('records', 'RecordController');
-Route::get('records/create', 'RecordController@create');
-Route::get('records/searchLend', 'RecordController@searchLend');
-Route::get('records/checkLend', 'RecordController@checkLend');
-
-
-
-
+    Route::group(['prefix' => 'records'], function () {
+        Route::post('/store','RecordController@store');
+        Route::get('/create', 'RecordController@create');
+        Route::get('/searchLend', 'RecordController@searchLend');
+        Route::get('/checkLend', 'RecordController@checkLend');
+    });
 
 
 
-Route::resource('posts', 'UserPostsController');
+    Route::resource('posts', 'UserPostsController');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::post('posts/checkUsers','UserPostsController@index');
-// Route::post('posts/createDevive','UserPostsController@index');
-// Route::post('posts/searchDevice','UserPostsController@index');
-// Route::post('posts/createForm','UserPostsController@index');
-
-// Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

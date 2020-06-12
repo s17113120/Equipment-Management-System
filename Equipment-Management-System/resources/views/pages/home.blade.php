@@ -6,5 +6,6 @@
             <div class="paper-title"></div>
         </div>
     </div> --}}
+
 @endsection
 

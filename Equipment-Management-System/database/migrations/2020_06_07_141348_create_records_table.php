@@ -18,7 +18,8 @@ class CreateRecordsTable extends Migration
             $table->string('user_id');
             $table->string('device_id');
             $table->integer('record_amount');
-            $table->string('record_dateOfReturn');
+            $table->integer('auditors_id'); // 審核員_id
+            $table->string('record_dateOfReturn'); // 歸還日期
             $table->string('record_content');
             $table->timestamps();
         });

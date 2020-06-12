@@ -35,7 +35,7 @@
                     </li>
                 @elseif (session('userdata')->user_authority == "admin")
                     <li>
-                        <a href="{{ url('devices/create') }}"><i class="fas fa-plus"></i>新增設備</a>
+                        <a href="{{ url('devices/store') }}"><i class="fas fa-plus"></i>新增設備</a>
                     </li>
                     <li>
                         <a href="{{ url('records/checkLend') }}"><i class="fas fa-paste"></i>審核借出</a>
