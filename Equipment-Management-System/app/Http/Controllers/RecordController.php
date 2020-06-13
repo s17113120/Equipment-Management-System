@@ -31,10 +31,11 @@ class RecordController extends Controller
         $this->validate($request, [
             'device_id' => 'required',
             'returnDate' => 'required',
-        ]); // 顯示空資訊
+        ]); // 檢查並顯示空資訊
 
 
 
+        // 取設備資料
         $check_device_id = DB::table('devices')
         ->join('device_status', 'device_status.id', '=', 'devices.device_status')
         ->where('device_id', '=' ,$request->device_id)
@@ -44,13 +45,20 @@ class RecordController extends Controller
         if ($check_device_id) {
 
             if ($check_device_id[0]->device_status_content == "未借出") {
+
+                // 借出紀錄
                 $record = new Record;
                 $record->user_id = session('userdata')->user_id;
                 $record->device_id = $request->device_id;
                 $record->record_amount = 1;
+                $record->record_dateOfTake = $request->outDate;
                 $record->record_dateOfReturn = $request->returnDate;
                 $record->record_content = $request->body;
                 $record->save();
+
+                // 設備狀態
+
+
 
                 return redirect('records/create')->with('success', '已成功申請，審核時間為1天左右，等待審核結果');
             } else {

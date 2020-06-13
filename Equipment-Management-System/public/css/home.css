@@ -148,8 +148,11 @@ body {
 /* content */
 
 .content {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     width: 85%;
-    /* height: 100%; */
+    min-height: 100%;
     padding: 3rem;
     /* background-color: rgb(197, 197, 197); */
     float: right;
