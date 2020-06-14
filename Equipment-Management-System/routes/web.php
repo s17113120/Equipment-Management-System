@@ -44,6 +44,9 @@ use Illuminate\Support\Facades\Route;
         Route::post('/updateLend', 'RecordController@updateLend');
         Route::get('/lendHistory', 'RecordController@lendHistory');
         Route::get('/lendHistory/search/{data}', 'RecordController@search');
+        Route::get('/deviceBack', 'RecordController@deviceBack');
+        Route::post('/deviceback_update', 'RecordController@deviceback_update');
+        Route::get('/deviceBack/search/{data}', 'RecordController@searchDeviceBack');
 
     });
 

@@ -72,9 +72,17 @@
     document.querySelector('#searchForm').addEventListener("submit", function(event) {
         event.preventDefault();
 
+
         let data = document.querySelector('input[name="device_search"]').value;
-        this.action = `{{ url('/devices/search/${data}') }}`;
-        this.submit();
+
+
+        if (data != "") {
+            this.action = `{{ url('/devices/search/${data}') }}`;
+            this.submit();
+        } else {
+            this.action = `{{ url('/devices') }}`;
+            this.submit();
+        }
 
     });
 </script>
