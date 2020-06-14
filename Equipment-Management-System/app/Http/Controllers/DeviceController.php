@@ -82,5 +82,37 @@ class DeviceController extends Controller
 
     }
 
+    public function modify($id) {
+        $title = '設備資料';
+        // $device = Device::find($id);
+
+        $device = DB::table('devices')
+        ->join('device_status','device_status.device_status_id', '=', 'devices.device_status')
+        ->where('devices.id', '=', $id)
+        ->get();
+        $data_arr = array(
+            'title' => $title,
+            'posts' =>  $device[0],
+        );
+        return view('devices.modifyDeviec')->with($data_arr);
+        // return $device;
+    }
+
+    public function update(Request $request) {
+
+        $device = Device::find($request->device_id);
+        $device->device_name = $request->device_name;
+        $device->device_model = $request->device_model;
+        $device->device_remarks = $request->device_remarks;
+        $device->device_status = $request->device_status;
+
+        $device->save();
+
+        $url = 'devices/modify/'. $request->device_id;
+
+        return redirect($url)->with('success', '修改設備資訊成功');
+        // return $request;
+    }
+
 
 }

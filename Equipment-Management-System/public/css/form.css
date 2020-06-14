@@ -68,6 +68,13 @@ form .form-group-b {
     text-align: center;
 }
 
+.form-group .group-input select {
+    width: 100%;
+    padding: 0.25rem 1rem;
+    text-align: center;
+    text-align-last: center;
+}
+
 .form-group-b .group-textarea {
     position: relative;
     width: 80%;

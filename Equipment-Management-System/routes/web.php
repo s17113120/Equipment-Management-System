@@ -31,7 +31,8 @@ use Illuminate\Support\Facades\Route;
         Route::get('/search/{data}', 'DeviceController@search');
         Route::get('/create', 'DeviceController@create');
         Route::post('/store', 'DeviceController@store');
-
+        Route::get('modify/{data}', 'DeviceController@modify');
+        Route::post('/update', 'DeviceController@update');
     });
 
     Route::group(['prefix' => 'records'], function () {
@@ -43,6 +44,7 @@ use Illuminate\Support\Facades\Route;
         Route::post('/updateLend', 'RecordController@updateLend');
         Route::get('/lendHistory', 'RecordController@lendHistory');
         Route::get('/lendHistory/search/{data}', 'RecordController@search');
+
     });
 
 

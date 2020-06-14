@@ -35,7 +35,17 @@
         <div class="tbody">
             @if (count($posts) > 0) @foreach ($posts as $post)
             <div class="tr">
-                <div class="td">{{ $post->device_id }}</div>
+                <div class="td">{{ $post->device_id }}
+                    @if (session('userdata')->user_authority == "user")
+
+                    @else
+                        @if ($post->device_status == 1 || $post->device_status == 4)
+                            <a href="devices/modify/{{ $post->id }}" style="margin-left: 15px;color: yellow;"><i class="fas fa-pencil-alt"></i></a>
+                        @else
+
+                        @endif
+                    @endif
+                </div>
                 <div class="td">{{ $post->device_name }}</div>
                 <div class="td">{{ $post->device_model }}</div>
                 <div class="td">{{ $post->device_status_content }}</div>
