@@ -37,11 +37,12 @@
                         <a href="{{ url('records/lendHistory') }}"><i class="fas fa-paste"></i>審核紀錄</a>
                     </li>
                     <li>
-                        <a href="{{ url('records/checkLend') }}"><i class="fas fa-chart-bar"></i>統計圖表</a>
-                    </li>
-                    <li>
                         <a href="{{ url('records/deviceBack') }}"><i class="fas fa-paste"></i>歸還設備</a>
                     </li>
+                    <li>
+                        <a href="{{ url('records/checkLend') }}"><i class="fas fa-chart-bar"></i>統計圖表</a>
+                    </li>
+
                 @elseif (session('userdata')->user_authority == "admin")
                     <li>
                         <a href="{{ url('devices/create') }}"><i class="fas fa-plus"></i>新增設備</a>
@@ -74,7 +75,7 @@
             <div class="userData">
                 <div class="user-div user-icon"><i class="far fa-user fa-2x"></i></div>
                 <div class="user-div user-name">{{ session('userdata')->user_name }}</div>
-                <div class="user-div user-button"><div class="btn"><i class="fas fa-chevron-right"></i></div></div>
+                {{-- <div class="user-div user-button"><div class="btn"><i class="fas fa-chevron-right"></i></div></div> --}}
             </div>
         @endif
 
