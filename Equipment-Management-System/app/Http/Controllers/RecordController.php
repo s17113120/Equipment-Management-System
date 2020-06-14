@@ -221,7 +221,7 @@ class RecordController extends Controller
 
     public function deviceBack() {
 
-        $title = '歸回設備';
+        $title = '歸還設備';
         $posts = DB::table('records')
         ->join('devices', 'devices.id', '=', 'records.device_id')
         ->join('device_status', 'device_status.device_status_id', '=', 'devices.device_status')
