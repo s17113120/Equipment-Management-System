@@ -42,7 +42,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/checkLend', 'RecordController@checkLend');
         Route::post('/updateLend', 'RecordController@updateLend');
         Route::get('/lendHistory', 'RecordController@lendHistory');
-        Route::get('/search/{data}', 'RecordController@search');
+        Route::get('/lendHistory/search/{data}', 'RecordController@search');
     });
 
 

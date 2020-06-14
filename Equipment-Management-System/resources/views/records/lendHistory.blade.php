@@ -56,10 +56,17 @@
 
     document.querySelector('#searchForm').addEventListener("submit", function(event) {
         event.preventDefault();
-
         let data = document.querySelector('input[name="lend_search"]').value;
-        this.action = `{{ url('/records/search/${data}') }}`;
-        this.submit();
+
+        if (data != "") {
+            this.action = `{{ url('/records/lendHistory/search/${data}') }}`;
+            this.submit();
+        } else {
+            this.action = `{{ url('/records/lendHistory') }}`;
+            this.submit();
+        }
+
+
     });
 </script>
 @endsection

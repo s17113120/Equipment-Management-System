@@ -188,19 +188,26 @@ class RecordController extends Controller
 
     public function search(Request $request, $data) {
 
+        session()->put('searchdata', $data);
+
         $posts = DB::table('records')
         ->join('devices', 'devices.id', '=', 'records.device_id')
         ->join('device_status', 'device_status.device_status_id', '=', 'devices.device_status')
         ->join('record_status', 'record_status.record_status_id', '=', 'records.record_status')
         ->join('users', 'users.user_id', '=', 'records.user_id')
-        ->where('records.record_id', 'like', '%'.$data.'%')
-        ->orWhere('users.user_name', 'like', '%'.$data.'%')
-        ->orWhere('devices.device_id', 'like', '%'.$data.'%')
-        ->orWhere('devices.device_name', 'like', '%'.$data.'%')
-        ->orWhere('records.record_dateOfTake', 'like', '%'.$data.'%')
-        ->orWhere('records.record_dateOfReturn', 'like', '%'.$data.'%')
-        ->orWhere('record_status.record_status_content', 'like', $data)
-        ->orWhere('records.record_content', 'like', '%'.$data.'%')
+
+        ->where('record_status', '!=' , 1)
+        ->where(function ($query) {
+            $query->orWhere('records.record_id', 'like', '%'.session('searchdata').'%')
+                ->orWhere('users.user_name', 'like', '%'.session('searchdata').'%')
+                ->orWhere('devices.device_id', 'like', '%'.session('searchdata').'%')
+                ->orWhere('devices.device_name', 'like', '%'.session('searchdata').'%')
+                ->orWhere('records.record_dateOfTake', 'like', '%'.session('searchdata').'%')
+                ->orWhere('records.record_dateOfReturn', 'like', '%'.session('searchdata').'%')
+                ->orWhere('record_status.record_status_content', 'like', session('searchdata'))
+                ->orWhere('records.record_content', 'like', '%'.session('searchdata').'%');
+        })
+
         ->paginate(3);
 
         $data_arr = array(
