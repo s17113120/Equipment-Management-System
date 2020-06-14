@@ -38,7 +38,11 @@ use Illuminate\Support\Facades\Route;
         Route::post('/store','RecordController@store');
         Route::get('/create', 'RecordController@create');
         Route::get('/searchLend', 'RecordController@searchLend');
+        Route::get('/searchLendHistory', 'RecordController@searchLendHistory');
         Route::get('/checkLend', 'RecordController@checkLend');
+        Route::post('/updateLend', 'RecordController@updateLend');
+        Route::get('/lendHistory', 'RecordController@lendHistory');
+        Route::get('/search/{data}', 'RecordController@search');
     });
 
 

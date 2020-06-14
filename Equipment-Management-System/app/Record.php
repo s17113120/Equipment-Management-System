@@ -9,7 +9,7 @@ class Record extends Model
     // Table Name
     protected $table = 'records';
     //Primary Key
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'record_id';
     // Timestamps
     public $timestamps = true;
 

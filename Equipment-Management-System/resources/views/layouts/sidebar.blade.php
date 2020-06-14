@@ -20,7 +20,10 @@
                     <a href="{{ url('records/create') }}"><i class="fas fa-plus"></i>設備借出</a>
                 </li>
                 <li>
-                    <a href="{{ url('records/searchLend') }}"><i class="fas fa-paste"></i>查看個人借出</a>
+                    <a href="{{ url('records/searchLend') }}"><i class="fas fa-paste"></i>查看借出狀態</a>
+                </li>
+                <li>
+                    <a href="{{ url('records/searchLendHistory') }}"><i class="fas fa-paste"></i>查看借出紀錄</a>
                 </li>
 
                 @if (session('userdata')->user_authority == "management")
@@ -31,14 +34,20 @@
                         <a href="{{ url('records/checkLend') }}"><i class="fas fa-paste"></i>審核借出</a>
                     </li>
                     <li>
+                        <a href="{{ url('records/lendHistory') }}"><i class="fas fa-paste"></i>審核紀錄</a>
+                    </li>
+                    <li>
                         <a href="{{ url('records/checkLend') }}"><i class="fas fa-chart-bar"></i>統計圖表</a>
                     </li>
                 @elseif (session('userdata')->user_authority == "admin")
                     <li>
-                        <a href="{{ url('devices/store') }}"><i class="fas fa-plus"></i>新增設備</a>
+                        <a href="{{ url('devices/create') }}"><i class="fas fa-plus"></i>新增設備</a>
                     </li>
                     <li>
                         <a href="{{ url('records/checkLend') }}"><i class="fas fa-paste"></i>審核借出</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('records/lendHistory') }}"><i class="fas fa-paste"></i>審核紀錄</a>
                     </li>
                 @endif
 

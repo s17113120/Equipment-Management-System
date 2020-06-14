@@ -17,7 +17,7 @@ class CreateDevicesTable extends Migration
             $table->increments('id');
             $table->string('device_id');
             $table->string('device_name');
-            $table->string('device_model');
+            $table->string('device_model')->nullable();
             $table->string('device_remarks')->nullable();
             $table->integer('device_status');
             $table->rememberToken();

@@ -22,6 +22,7 @@ class CreateRecordsTable extends Migration
             $table->string('record_dateOfTake'); // 借出日期
             $table->string('record_dateOfReturn'); // 歸還日期
             $table->string('record_content');
+            $table->string('record_status');
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class DeviceController extends Controller
     {
 
             $posts = DB::table('devices')
-            ->join('device_status', 'device_status.id', '=', 'devices.device_status')
+            ->join('device_status', 'device_status.device_status_id', '=', 'devices.device_status')
             ->orderByDesc('devices.created_at')
             ->paginate(5);
 
@@ -62,15 +62,16 @@ class DeviceController extends Controller
     public function search(Request $request, $data) {
 
         $posts = DB::table('devices')
-        ->join('device_status', 'device_status.id', '=', 'devices.device_status')
+        ->join('device_status', 'device_status.device_status_id', '=', 'devices.device_status')
         ->where('devices.id', 'like', '%'.$data.'%')
         ->orWhere('devices.device_id', 'like', '%'.$data.'%')
         ->orWhere('devices.device_name', 'like', '%'.$data.'%')
         ->orWhere('devices.device_model', 'like', '%'.$data.'%')
         ->orWhere('device_remarks', 'like', '%'.$data.'%')
         ->orWhere('device_status.device_status_content', 'like', '%'.$data.'%')
-        ->paginate(5)
-        ;
+        ->orWhere('devices.created_at', 'like', '%'.$data.'%')
+        ->orWhere('devices.updated_at', 'like', '%'.$data.'%')
+        ->paginate(5);
 
         $data_arr = array(
             'title' => '查詢設備',

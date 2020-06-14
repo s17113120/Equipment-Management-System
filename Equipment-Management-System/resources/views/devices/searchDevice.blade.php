@@ -24,10 +24,10 @@
                 <div class="th">狀態
                     <div class="line"></div>
                 </div>
-                <div class="th">上傳時間
+                <div class="th">最後更新
                     <div class="line"></div>
                 </div>
-                <div class="th">最後更新
+                <div class="th">上傳時間
                     <div class="line"></div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
                 <div class="td">{{ $post->device_name }}</div>
                 <div class="td">{{ $post->device_model }}</div>
                 <div class="td">{{ $post->device_status_content }}</div>
+                <div class="td">{!! $post->device_remarks !!}</div>
                 <div class="td">{{ $post->created_at }}</div>
-                <div class="td">{{ $post->updated_at }}</div>
             </div>
             @endforeach
             <div class="btns">

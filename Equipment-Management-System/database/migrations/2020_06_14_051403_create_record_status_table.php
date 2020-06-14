@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeviceStatusTable extends Migration
+class CreateRecordStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDeviceStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('device_status', function (Blueprint $table) {
-            $table->increments('device_status_id');
-            $table->string('device_status_content');
+        Schema::create('record_status', function (Blueprint $table) {
+            $table->increments('record_status_id');
+            $table->string('record_status_content');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateDeviceStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('device_status');
+        Schema::dropIfExists('record_status');
     }
 }
