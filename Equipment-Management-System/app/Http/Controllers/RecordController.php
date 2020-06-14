@@ -275,7 +275,7 @@ class RecordController extends Controller
         ->paginate(3);
 
         $data_arr = array(
-            'title' => '歸回設備',
+            'title' => '歸還設備',
             'posts' =>  $posts
         );
 
