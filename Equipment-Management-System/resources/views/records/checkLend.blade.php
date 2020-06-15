@@ -22,8 +22,14 @@
                                 <div class="cardBody-content"><div class="title">設備狀態</div>{{ $post->device_status_content }}</div>
                                 <div class="cardBody-content"><div class="title">審核狀態</div>{{ $post->record_status_content }}</div>
                                 <div class="cardBody-content"><div class="title">備註</div>{!! $post->record_content !!}</div>
-                                <div class="cardBody-content cardBtn"><button class="btns btn-agree" value="{{ $post->record_id }}" onclick="agree_form(this)">同意</button></div>
-                                <div class="cardBody-content cardBtn"><button class="btns btn-disagree" value="{{ $post->record_id }}" onclick="disagree_form(this)">不同意</button></div>
+
+                                @if (session('userdata')->user_id == $post->user_id)
+
+                                @else
+                                    <div class="cardBody-content cardBtn"><button class="btns btn-agree" value="{{ $post->record_id }}" onclick="agree_form(this)">同意</button></div>
+                                    <div class="cardBody-content cardBtn"><button class="btns btn-disagree" value="{{ $post->record_id }}" onclick="disagree_form(this)">不同意</button></div>
+                                @endif
+
                             </div>
                         </div>
                         <form class="agree_form_{{ $post->record_id }}" method="post" action="{{ url('records/updateLend') }}">
