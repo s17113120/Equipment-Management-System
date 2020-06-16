@@ -26,7 +26,7 @@
                     <a href="{{ url('records/searchLendHistory') }}"><i class="fas fa-paste"></i>查看借出紀錄</a>
                 </li>
 
-                @if (session('userdata')->user_authority == "management")
+                @if (session('userdata')->user_status_content == "management")
                     <li>
                         <a href="{{ url('devices/create') }}"><i class="fas fa-plus"></i>新增設備</a>
                     </li>
@@ -37,13 +37,14 @@
                         <a href="{{ url('records/lendHistory') }}"><i class="fas fa-paste"></i>審核紀錄</a>
                     </li>
                     <li>
-                        <a href="{{ url('records/deviceBack') }}"><i class="fas fa-paste"></i>歸還設備</a>
+                        <a href="{{ url('records/deviceBack') }}"><i class="far fa-hdd"></i>歸還設備</a>
                     </li>
                     <li>
-                        <a href="{{ url('records/checkLend') }}"><i class="fas fa-chart-bar"></i>統計圖表</a>
+                        <a href="{{ url('user/') }}"><i class="fas fa-users-cog"></i>人員管理</a>
                     </li>
 
-                @elseif (session('userdata')->user_authority == "admin")
+
+                @elseif (session('userdata')->user_status_content == "admin")
                     <li>
                         <a href="{{ url('devices/create') }}"><i class="fas fa-plus"></i>新增設備</a>
                     </li>
@@ -54,7 +55,10 @@
                         <a href="{{ url('records/lendHistory') }}"><i class="fas fa-paste"></i>審核紀錄</a>
                     </li>
                     <li>
-                        <a href="{{ url('records/deviceBack') }}"><i class="fas fa-paste"></i>歸還設備</a>
+                        <a href="{{ url('records/deviceBack') }}"><i class="far fa-hdd"></i>歸還設備</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('user/') }}"><i class="fas fa-users-cog"></i>人員管理</a>
                     </li>
                 @endif
 

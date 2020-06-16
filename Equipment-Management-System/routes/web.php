@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('addUser', 'PagesController@addUser');
 
 
-    Route::post('user/store', 'UserPostsController@store');
-    Route::post('user/login', 'UserPostsController@login');
+
+
     Route::get('logout', 'UserPostsController@logout');
 
 
@@ -50,7 +50,15 @@ use Illuminate\Support\Facades\Route;
 
     });
 
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/', 'UserPostsController@showUsers');
+        Route::post('/store', 'UserPostsController@store');
+        Route::post('/login', 'UserPostsController@login');
+        Route::get('/modify/{data}', 'UserPostsController@modify');
+        Route::post('/update', 'UserPostsController@update');
 
+
+    });
 
     Route::resource('posts', 'UserPostsController');
     Route::get('/home', 'HomeController@index')->name('home');

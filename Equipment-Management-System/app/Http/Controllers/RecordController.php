@@ -170,12 +170,36 @@ class RecordController extends Controller
         ->join('devices', 'devices.id', '=', 'records.device_id')
         ->join('device_status', 'device_status.device_status_id', '=', 'devices.device_status')
         ->join('record_status', 'record_status.record_status_id', '=', 'records.record_status')
-        ->join('users', 'users.user_id', '=', 'records.user_id')
-
+        ->join('users as u_id', 'u_id.user_id', '=', 'records.user_id')
+        ->join('users as a_id', 'a_id.user_id', '=', 'records.auditors_id')
         ->where('record_status', '!=' , 1)
-        ->paginate(3);
-
-        // $posts = Record::where('record_status', '!=' , 1)->paginate(3);
+        ->orderBy('record_id', 'desc')
+        ->paginate(3,
+            array(
+                'records.record_id as record_id',
+                'records.record_amount as record_amount',
+                'records.record_dateOfTake as record_dateOfTake',
+                'records.record_dateOfReturn as record_dateOfReturn',
+                'records.record_content as record_content',
+                'records.record_status as record_status',
+                'records.created_at as created_at',
+                'records.updated_at as updated_at',
+                'devices.id as id',
+                'devices.device_id as device_id',
+                'devices.device_name as device_name',
+                'devices.device_model as device_model',
+                'devices.device_remarks as device_remarks',
+                'devices.device_status as device_status',
+                'device_status.device_status_id as device_status_id',
+                'device_status.device_status_content as device_status_content',
+                'record_status.record_status_id as record_status_id',
+                'record_status.record_status_content as record_status_content',
+                'u_id.user_id as user_id',
+                'u_id.user_name as user_name',
+                'a_id.user_id as auditors_id',
+                'a_id.user_name as auditors_name',
+            )
+        );
 
         $data = array(
             'title' => $title,
@@ -184,6 +208,7 @@ class RecordController extends Controller
 
 
         return view('records.lendHistory')->with($data);
+        // return $posts;
     }
 
     public function search(Request $request, $data) {
@@ -194,24 +219,50 @@ class RecordController extends Controller
         ->join('devices', 'devices.id', '=', 'records.device_id')
         ->join('device_status', 'device_status.device_status_id', '=', 'devices.device_status')
         ->join('record_status', 'record_status.record_status_id', '=', 'records.record_status')
-        ->join('users', 'users.user_id', '=', 'records.user_id')
-
+        ->join('users as u_id', 'u_id.user_id', '=', 'records.user_id')
+        ->join('users as a_id', 'a_id.user_id', '=', 'records.auditors_id')
         ->where('record_status', '!=' , 1)
         ->where(function ($query) {
             $query->orWhere('records.record_id', 'like', '%'.session('searchdata').'%')
-                ->orWhere('users.user_name', 'like', '%'.session('searchdata').'%')
+                ->orWhere('u_id.user_name', 'like', '%'.session('searchdata').'%')
+                ->orWhere('a_id.user_name', 'like', '%'.session('searchdata').'%')
                 ->orWhere('devices.device_id', 'like', '%'.session('searchdata').'%')
-                ->orWhere('devices.device_name', 'like', '%'.session('searchdata').'%')
+                ->orWhere('records.record_amount', 'like', '%'.session('searchdata').'%')
                 ->orWhere('records.record_dateOfTake', 'like', '%'.session('searchdata').'%')
                 ->orWhere('records.record_dateOfReturn', 'like', '%'.session('searchdata').'%')
                 ->orWhere('record_status.record_status_content', 'like', session('searchdata'))
                 ->orWhere('records.record_content', 'like', '%'.session('searchdata').'%');
         })
-
-        ->paginate(3);
+        ->orderBy('record_id', 'desc')
+        ->paginate(3,
+            array(
+                'records.record_id as record_id',
+                'records.record_amount as record_amount',
+                'records.record_dateOfTake as record_dateOfTake',
+                'records.record_dateOfReturn as record_dateOfReturn',
+                'records.record_content as record_content',
+                'records.record_status as record_status',
+                'records.created_at as created_at',
+                'records.updated_at as updated_at',
+                'devices.id as id',
+                'devices.device_id as device_id',
+                'devices.device_name as device_name',
+                'devices.device_model as device_model',
+                'devices.device_remarks as device_remarks',
+                'devices.device_status as device_status',
+                'device_status.device_status_id as device_status_id',
+                'device_status.device_status_content as device_status_content',
+                'record_status.record_status_id as record_status_id',
+                'record_status.record_status_content as record_status_content',
+                'u_id.user_id as user_id',
+                'u_id.user_name as user_name',
+                'a_id.user_id as auditors_id',
+                'a_id.user_name as auditors_name',
+            )
+        );
 
         $data_arr = array(
-            'title' => '查詢設備',
+            'title' => '審核紀錄',
             'posts' =>  $posts
         );
 

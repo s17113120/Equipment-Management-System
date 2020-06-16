@@ -60,7 +60,7 @@ class UserPostsController extends Controller
             $user->user_name = $request->input('name');
             $user->user_account = $request->input('account');
             $user->user_password = Hash::make($request->input('password'));
-            $user->user_authority = "user";
+            $user->user_authority = 3;
 
             $user->save();
 
@@ -97,9 +97,43 @@ class UserPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::find($request->user_id);
+
+
+        if ($request->user_password == $user->user_password)
+        {
+            $user->user_name = $request->user_name;
+            $user->user_authority = $request->user_authority;
+            $user->save();
+        } else {
+            $user->user_name = $request->user_name;
+            $user->user_authority = $request->user_authority;
+            $user->user_password = Hash::make($request->user_password);
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', '變更成功');
+
+    }
+    public function modify($id) {
+        // $user = DB::table('users')
+        // ->join('user_status', 'user_status.user_status_id', '=', 'users.user_authority')
+        // ->where('users.user_id', '=', $id)
+        // ->get();
+        $title = "修改使用者";
+        $user = DB::table('users')
+        ->join('user_status', 'user_status.user_status_id', '=', 'users.user_authority')
+        ->where('users.user_id', '=', $id)
+        ->get();
+
+        $data = array(
+            'title' => $title,
+            'user' => $user[0],
+        );
+        // return $user;
+        return view('pages.modifyUser')->with($data);
     }
 
     /**
@@ -116,18 +150,17 @@ class UserPostsController extends Controller
     public function login (Request $request) {
         $title = "登入";
         $account = $request->account;
-        $user = User::where(['user_account' => $request->account])->first();
-
-        if (count((array)$user) > 0) {
-            if (Hash::check($request->password, $user->user_password)) {
-                session()->put('userdata', $user);
+        $user = DB::table('users')
+        ->join('user_status', 'user_status.user_status_id', '=', 'users.user_authority')
+        ->where('user_account', '=', $request->account)
+        ->get();
+        if (count((array)$user[0]) > 0) {
+            if (Hash::check($request->password, $user[0]->user_password)) {
+                session()->put('userdata', $user[0]);
             } else {
                 return redirect()->back()->with('error', '帳號密碼錯誤');
             }
-        } else {
-            return redirect()->back()->with('error', '帳號密碼錯誤');
         }
-
         return redirect('/');
     }
 
@@ -138,4 +171,18 @@ class UserPostsController extends Controller
 
     }
 
+    public function showUsers() {
+        $title = '人員管理';
+        $posts = DB::table('users')
+        ->join('user_status', 'user_status.user_status_id', '=', 'users.user_authority')
+        ->paginate(5);
+
+        $data = array(
+            'title' => $title,
+            'posts' => $posts,
+        );
+        return view('pages.showUsers')->with($data);
+    }
+
 }
+

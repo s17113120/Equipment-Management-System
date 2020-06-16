@@ -36,13 +36,11 @@
             @if (count($posts) > 0) @foreach ($posts as $post)
             <div class="tr">
                 <div class="td">{{ $post->device_id }}
-                    @if (session('userdata')->user_authority == "user")
+                    @if (session('userdata')->user_status_content == "user")
 
                     @else
                         @if ($post->device_status == 1 || $post->device_status == 4)
                             <a href="devices/modify/{{ $post->id }}" style="margin-left: 15px;color: yellow;"><i class="fas fa-pencil-alt"></i></a>
-                        @else
-
                         @endif
                     @endif
                 </div>

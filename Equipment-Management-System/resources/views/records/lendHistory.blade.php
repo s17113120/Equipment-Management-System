@@ -28,6 +28,7 @@
                                     <div class="cardBody-content"><div class="title">借出時間</div>{{ $post->record_dateOfTake }}</div>
                                     <div class="cardBody-content"><div class="title">歸還時間</div>{{ $post->record_dateOfReturn }}</div>
                                     <div class="cardBody-content"><div class="title">審核狀態</div>{{ $post->record_status_content }}</div>
+                                    <div class="cardBody-content"><div class="title">審核者姓名</div>{{ $post->auditors_name }}</div>
                                     <div class="cardBody-content"><div class="title">備註</div>{!! $post->record_content !!}</div>
                                 </div>
                             </div>

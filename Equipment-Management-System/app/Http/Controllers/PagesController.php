@@ -12,9 +12,9 @@ class PagesController extends Controller
         $title = 'Welcome To Laravel';
 
         if (session()->has('userdata')) {
-            if (session('userdata')->user_authority == "management") {
+            if (session('userdata')->user_status_content == "management") {
                 return view('pages.management_home');
-            } else if (session('userdata')->user_authority == "admin") {
+            } else if (session('userdata')->user_status_content == "admin") {
                 return view('pages.admin_home');
             } else { // user
                 return view('pages.user_home');;
